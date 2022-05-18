@@ -1,0 +1,23 @@
+[package]
+authors = ["mogenson@google.com"]
+edition = "2021"
+name = "nuttx-rust-std-example"
+version = "0.1.0"
+
+[lib]
+name       = "rust"
+test       = false
+bench      = false
+crate-type = ["staticlib"]
+
+[dependencies]
+cheapalloc = "0.1.0"
+
+[profile.release]
+opt-level = "s"      # Optimize for size
+panic     = "abort"  # Terminate the process upon panic
+
+# [profile.release]
+# codegen-units = 1 # better optimizations
+# debug = true # symbols are nice and they don't increase the size on Flash
+# lto = true # better optimizations

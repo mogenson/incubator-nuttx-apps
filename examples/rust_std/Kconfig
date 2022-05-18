@@ -1,0 +1,30 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_RUST_STD
+	bool "Rust std example"
+	default n
+	---help---
+		Enable the Rust std example
+		Note: add "EXTRA_LIBS += -lrust" to your board's Make.defs
+
+if EXAMPLES_RUST_STD
+
+config EXAMPLES_RUST_STD_PROGNAME
+	string "Program name"
+	default "rust_std"
+	---help---
+		This is the name of the program that will be used when the
+		program is installed.
+
+config EXAMPLES_RUST_STD_PRIORITY
+	int "Task priority"
+	default 100
+
+config EXAMPLES_RUST_STD_STACKSIZE
+	int "Stack size"
+	default DEFAULT_TASK_STACKSIZE
+
+endif
